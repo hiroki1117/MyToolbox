@@ -1,4 +1,4 @@
-name := """MyIntro"""
+name := """MyToolBox"""
 organization := "hiroki"
 
 version := "1.0-SNAPSHOT"
