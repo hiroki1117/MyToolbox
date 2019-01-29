@@ -1,9 +1,24 @@
 @()
 
 @main("MyToolBox") {
-    <h1>login</h1>
-    <form method="post">
-        <input type="password" name="password">
-        <input type="submit">
-    </form>
+    <section class="section">
+        <div class="columns">
+            <div class="is-two-fifths">
+                <form method="post">
+                    <!--<input type="password" name="password">-->
+                    <div class="field is-grouped is-two-fifths">
+                        <p class="control has-icons-left is-expanded">
+                            <input class="input" type="password" placeholder="Password" name="password">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </p>
+                        <p class="control">
+                            <input class="button is-primary" type="submit">
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 }
