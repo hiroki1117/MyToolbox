@@ -24,4 +24,8 @@ class HomeController @Inject()(config: Configuration, loginAction: LoginConfirmA
       Ok(views.html.login())
     }
   }
+
+  def logout() = Action {
+    Redirect("/login").withNewSession
+  }
 }
