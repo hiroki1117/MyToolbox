@@ -28,4 +28,6 @@ class HomeController @Inject()(config: Configuration, loginAction: LoginConfirmA
   def logout() = Action {
     Redirect("/login").withNewSession
   }
+
+  def all(path: String) = Action{ Redirect("/") }
 }
