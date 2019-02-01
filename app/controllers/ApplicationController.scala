@@ -4,6 +4,7 @@ import javax.inject._
 import play.api.mvc._
 import com.danielasfregola.twitter4s.TwitterRestClient
 import util.LoginConfirmAction
+import scala.util.Try
 
 class ApplicationController @Inject()(loginAction: LoginConfirmAction, cc: ControllerComponents) extends AbstractController(cc) {
   val client = TwitterRestClient()
@@ -12,7 +13,7 @@ class ApplicationController @Inject()(loginAction: LoginConfirmAction, cc: Contr
 
   def postTweet() = loginAction{implicit request =>
     val data = request.body.asFormUrlEncoded.get("tweet")
-    client.createTweet(status=data(0))
-    Ok(views.html.mytweet())
+    val message = Try(client.createTweet(status=data(0))).fold(fa=>"error", fb=>"success")
+    Ok(views.html.mytweet(message))
   }
 }

@@ -1,8 +1,12 @@
-@()
+@(message: String = "")
 
 @main("MyTweet"){
   <form method="post" action="/mytweet/post">
     <textarea name="tweet"></textarea>
     <input type="submit" value="send">
   </form>
+  <script>
+    let m = "@message"
+    if(m!=="") alert(m);
+  </script>
 }
