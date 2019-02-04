@@ -1,5 +1,5 @@
 module.exports = {
-  //outputDir: '../public/vue',
+  outputDir: '../public/vue',
   filenameHashing: false,
   productionSourceMap: false,
   css: {
