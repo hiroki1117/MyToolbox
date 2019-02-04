@@ -16,6 +16,8 @@ object FrontBuildHook {
 
       override def afterStopped(): Unit = {
         process.foreach(_.destroy())
+        Process("cmd /c rmdir /s /q vue", base / "public").run
+        ()
       }
     }
     FrontBuildProcess
