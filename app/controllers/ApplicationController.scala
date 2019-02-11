@@ -16,4 +16,6 @@ class ApplicationController @Inject()(loginAction: LoginConfirmAction, cc: Contr
     val message = Try(client.createTweet(status=data(0))).fold(fa=>"error", fb=>"success")
     Ok(views.html.mytweet(message))
   }
+
+  def vueApp() = Action{ Ok(views.html.VueAppTemplate("app", "VueApp")) }
 }

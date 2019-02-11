@@ -13,6 +13,8 @@ libraryDependencies += guice
 libraryDependencies += "com.danielasfregola" %% "twitter4s" % "5.5"
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test
 
+PlayKeys.playRunHooks += FrontBuildHook(baseDirectory.value)
+
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "hiroki.controllers._"
 

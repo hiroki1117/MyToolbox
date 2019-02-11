@@ -1,0 +1,9 @@
+@(app: String, title: String)
+
+@main(title){
+    <div id="app"></div>
+    <script src="@routes.Assets.versioned("vue/js/chunk-vendors.js")" type="text/javascript"></script>
+    @defining("vue/js/" + app + ".js"){path =>
+        <script src="@routes.Assets.versioned(path)" type="text/javascript"></script>
+    }
+}
