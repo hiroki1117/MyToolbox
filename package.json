@@ -1,10 +1,9 @@
-
 {
   "engines": {
     "node": "8.11.3",
     "npm": "6.7.0"
   },
   "scripts": {
-    "heroku-postbuild": "cd front && npm install && npm run build"
+    "heroku-postbuild": "cd front ; npm install ; npm run build"
   }
 }
