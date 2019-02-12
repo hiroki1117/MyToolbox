@@ -17,5 +17,5 @@ class ApplicationController @Inject()(loginAction: LoginConfirmAction, cc: Contr
     Ok(views.html.mytweet(message))
   }
 
-  def vueApp() = Action{ Ok(views.html.VueAppTemplate("app", "VueApp")) }
+  def vueApp() = loginAction{ Ok(views.html.VueAppTemplate("app", "VueApp")) }
 }
