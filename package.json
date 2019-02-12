@@ -1,4 +1,7 @@
 
 {
-  "start": "cd front && npm install && npm run build"
+  "start": "cd front && npm install && npm run build",
+  "engines": {
+    "node": "8.11.3"
+  }
 }
