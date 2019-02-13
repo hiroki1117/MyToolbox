@@ -15,6 +15,17 @@ libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2
 
 PlayKeys.playRunHooks += FrontBuildHook(baseDirectory.value)
 
+lazy val prodFrontBuild = taskKey[Unit]("Front Build on production")
+prodFrontBuild := {
+  import scala.sys.process.Process
+  val base = baseDirectory.value
+  Process(FrontCommands.install, base / "front").!
+  Process(FrontCommands.build, base / "front").!
+}
+
+stage := (stage dependsOn prodFrontBuild).value
+
+
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "hiroki.controllers._"
 
