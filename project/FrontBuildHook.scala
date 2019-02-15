@@ -22,7 +22,7 @@ object FrontBuildHook {
         if(!(base/ "front" / "node_modules").exists()) Process(npmInstall, base / "front").!
       }
 
-      override def afterStarted(addr: InetSocketAddress): Unit = {
+      override def afterStarted(): Unit = {
         process = Option(Process(npmBuild, base / "front").run)
       }
 
