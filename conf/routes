@@ -12,6 +12,8 @@ GET     /logout                     controllers.HomeController.logout
 GET     /mytweet                    controllers.ApplicationController.myTweet
 POST    /mytweet/post               controllers.ApplicationController.postTweet
 
+POST    /mytweet/api/post           controllers.ApplicationController.postTweetApi
+
 GET     /vue                        controllers.ApplicationController.vueApp
 
 # Map static resources from the /public folder to the /assets URL path

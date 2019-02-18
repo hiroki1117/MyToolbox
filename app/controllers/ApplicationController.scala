@@ -17,5 +17,11 @@ class ApplicationController @Inject()(loginAction: LoginConfirmAction, cc: Contr
     Ok(views.html.mytweet(message))
   }
 
+  def postTweetApi() = Action{implicit request =>
+    val data = (request.body.asJson.get \ "tweet").get.toString()
+    val message = Try(client.createTweet(status=data)).fold(fa=>"error", fb=>"success")
+    Ok(message)
+  }
+
   def vueApp() = loginAction{ Ok(views.html.VueAppTemplate("mytweet", "VueApp")) }
 }
