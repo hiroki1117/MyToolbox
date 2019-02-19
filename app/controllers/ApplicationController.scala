@@ -11,7 +11,7 @@ class ApplicationController @Inject()(loginAction: LoginConfirmAction, cc: Contr
 
   def myTweet() = loginAction{ Ok(views.html.VueAppTemplate("mytweet", "MyTweet")) }
 
-  def postTweetApi() = Action{implicit request =>
+  def postTweetApi() = loginAction{implicit request =>
     val data = (request.body.asJson.get \ "tweet").get.toString().replaceAll("\"", "")
     val message = Try(client.createTweet(status=data)).fold(_=>"error", _=>"success")
     Ok(message)
