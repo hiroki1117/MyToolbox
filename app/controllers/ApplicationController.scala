@@ -13,13 +13,13 @@ class ApplicationController @Inject()(loginAction: LoginConfirmAction, cc: Contr
 
   def postTweet() = loginAction{implicit request =>
     val data = request.body.asFormUrlEncoded.get("tweet")
-    val message = Try(client.createTweet(status=data(0))).fold(fa=>"error", fb=>"success")
+    val message = Try(client.createTweet(status=data(0))).fold(_=>"error", _=>"success")
     Ok(views.html.mytweet(message))
   }
 
   def postTweetApi() = Action{implicit request =>
-    val data = (request.body.asJson.get \ "tweet").get.toString()
-    val message = Try(client.createTweet(status=data)).fold(fa=>"error", fb=>"success")
+    val data = (request.body.asJson.get \ "tweet").get.toString().replaceAll("\"", "")
+    val message = Try(client.createTweet(status=data)).fold(_=>"error", _=>"success")
     Ok(message)
   }
 
