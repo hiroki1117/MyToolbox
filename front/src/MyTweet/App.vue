@@ -16,10 +16,9 @@ export default {
   },
   methods: {
     send: function() {
-      alert(this.tweet);
       axios
         .post("/mytweet/api/post", { tweet: this.tweet })
-        .then(response => console.log(response.data));
+        .then(response => alert(response.data));
       this.tweet = "";
     }
   }
