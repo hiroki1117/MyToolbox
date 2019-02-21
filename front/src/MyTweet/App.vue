@@ -16,10 +16,12 @@ export default {
   },
   methods: {
     send: function() {
-      axios
-        .post("/mytweet/api/post", { tweet: this.tweet })
-        .then(response => alert(response.data));
-      this.tweet = "";
+      axios.post("/mytweet/api/post", { tweet: this.tweet }).then(response => {
+        if (response.data === "success") {
+          this.tweet = "";
+        }
+        alert(response.data);
+      });
     }
   }
 };
