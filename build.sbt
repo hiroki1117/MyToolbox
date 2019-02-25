@@ -1,20 +1,24 @@
-name := """MyToolBox"""
-organization := "hiroki"
 
-version := "1.0-SNAPSHOT"
+lazy val commonSettings = Seq(
+  name := """MyToolBox""",
+  organization := "hiroki",
+  version :="1.0-SNAPSHOT",
+  scalaVersion := "2.12.4",
+  resolvers += Resolver.sonatypeRepo("releases"),
+  libraryDependencies ++= Seq(
+    guice,
+    "com.typesafe.play" %% "play-slick" % "4.0.0",
+    "com.typesafe.play" %% "play-slick-evolutions" % "4.0.0",
+    "com.danielasfregola" %% "twitter4s" % "5.5",
+    "postgresql" % "postgresql" % "9.1-901.jdbc4",
+    "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test
+  )
+)
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
-
-scalaVersion := "2.12.4"
-
-resolvers += Resolver.sonatypeRepo("releases")
-
-libraryDependencies += guice
-libraryDependencies += "postgresql" % "postgresql" % "9.1-901.jdbc4"
-libraryDependencies += "com.typesafe.play" %% "play-slick" % "3.0.0"
-libraryDependencies += "com.typesafe.play" %% "play-slick-evolutions" % "3.0.0"
-libraryDependencies += "com.danielasfregola" %% "twitter4s" % "5.5"
-libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test
+    .settings(
+      commonSettings
+    )
 
 PlayKeys.playRunHooks += FrontBuildHook(baseDirectory.value)
 
