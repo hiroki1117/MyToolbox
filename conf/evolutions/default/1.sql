@@ -10,4 +10,4 @@ created TIMESTAMP DEFAULT CLOCK_TIMESTAMP()
 Insert into Vision (name, state) values('playvision', 1);
 
 -- !Downs
-DROP TABLE VISION;
+DROP TABLE IF EXISTS VISION;
