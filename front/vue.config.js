@@ -10,6 +10,11 @@ module.exports = {
       entry: "src/MyTweet/main.js",
       template: "public/index.html",
       filename: "mytweet.html"
+    },
+    mytodo: {
+      entry: "src/MyTodo/main.js",
+      template: "plublic/index.html",
+      filename: "mytodo.html"
     }
   }
 };
