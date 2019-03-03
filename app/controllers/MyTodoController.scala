@@ -32,6 +32,9 @@ class MyTodoController @Inject()(repo: TodoRepository,
 
   def deleteTodo = Action.async{ implicit request =>
     val json = request.body.asJson.get
-    repo.delete(json("id").toString().replaceAll("\"", "").toLong).map(id=>Ok(id.toString))
+    repo.delete(json("id").as[Long]).map{id=>
+      val result = if(id==1) true else false
+      Ok(Json.toJson(Json.obj("status" -> result)))
+    }
   }
 }

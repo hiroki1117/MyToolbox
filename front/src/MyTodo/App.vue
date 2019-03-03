@@ -44,13 +44,13 @@ export default {
         });
     },
     deleteTodo: function(data) {
-      alert("delete");
-      axios.post("/mytodo/api/delete", data).then(
-        response =>
-          (this.todoList = this.todoList.filter(function(element) {
-            return element.id !== response.data;
-          }))
-      );
+      if (confirm("削除します")) {
+        axios.post("/mytodo/api/delete", data).then(response => {
+          if (response.data.status) {
+            this.todoList = this.todoList.filter(ele => ele.id !== data.id);
+          }
+        });
+      }
     }
   },
   mounted() {
